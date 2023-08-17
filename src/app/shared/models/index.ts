@@ -1,0 +1,7 @@
+export { Endereco } from './endereco.model'
+export { Funcionario } from './funcionario.model'
+export { Login } from './login.model'
+export { Pedido, PedidoStatus } from './pedido.model'
+export { Roupa } from './roupa.model'
+export { Usuario, Perfil } from './usuario.model'
+export { UsuarioLogado } from './usuario-logado.model'

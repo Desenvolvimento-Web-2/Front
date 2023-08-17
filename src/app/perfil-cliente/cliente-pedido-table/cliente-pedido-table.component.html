@@ -1,0 +1,56 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="width: 5%">Nº</th>
+      <th style="width: 10%">Roupas</th>
+      <th style="width: 10%">Prazo</th>
+      <th style="width: 5%">Status</th>
+      <th style="width: 5%">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let pedido of pedidos" [ngSwitch]="pedido?.status">
+    <td>{{ pedido.id }}</td>
+    <td>
+      <ul>
+        <li *ngFor="let item of pedido.roupas">
+          {{ getNomeRoupa(item.id) }}, {{ item.quantidade }}
+        </li>
+      </ul>
+    </td>
+    <td><ul>
+      <li *ngFor="let item of pedido.roupas">
+        {{ getPrazoRoupa(item.id)  }}
+      </li>
+    </ul></td>
+    <td [ngStyle]="getColor(pedido)">{{ pedido.status }}</td>
+
+      <td *ngSwitchCase="status.EM_ABERTO">
+        <button
+          class="btn btn-primary btn-sm mb-1"
+          (click)="remover(pedido['id'])"
+          title="cancelar"
+        >
+          <i class="fa fa-trash-o"></i>
+        </button>
+      </td>
+      <td *ngSwitchCase="status.AGUARDANDO_PAGAMENTO">
+        <button
+          class="btn btn-primary btn-sm mb-1"
+          (click)="remover(pedido['id'])"
+          title="cancelar"
+        >
+          <i class="fa fa-trash-o"></i>
+        </button>
+        <button
+          class="btn btn-primary btn-sm mb-1 ml-1"
+          (click)="navegarParaPagamento(pedido.id)"
+          title="pagar"
+        >
+          <i class="fas fa-solid fa-dollar-sign"></i>
+        </button>
+      </td>
+      <td *ngSwitchDefault></td>
+    </tr>
+  </tbody>
+</table>

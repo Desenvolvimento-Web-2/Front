@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <div class="d-flex flex-column text-center mb-5 pt-5">
+    <h1 class="display-4 m-0">Pedido</h1>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-8 mb-5">
+      <div id="success"></div>
+      <form
+        [formGroup]="pedidoOnlineForm"
+        (ngSubmit)="onSubmit()"
+        #formDir="ngForm"
+      >
+        <h5 class="text-muted mb-3">
+          Para determinar o preço e o prazo, selecione "Adicionar Item" para adicionar o tipo e a
+          quantidade das roupas:
+        </h5>
+        <ng-container [formGroup]="pedidoOnlineForm">
+          <ng-container formArrayName="roupas">
+          <div [formGroupName]="i" *ngFor="let item of items; let i=index">
+            <div>
+              <select class="custom-select border px-4 form-control" style="height: 47px; border: 1px solid #00000036 !important;" formControlName="id">
+                <option value="Selecione o tipo da roupa" disabled selected>Selecione o tipo da roupa</option>
+                <option *ngFor="let roupa of roupas" [value]="roupa.id">{{ roupa.nome }}</option>
+              </select>
+            </div>
+            <div>
+              <input 
+                type="number"
+                placeholder="Selecione a quantidade da roupa anterior"
+                class="form-control p-4"
+                id="quantidade"
+                name="quantidade"
+                formControlName="quantidade"
+                required
+                min="1"
+              >
+            </div>
+          </div>
+          </ng-container>
+        </ng-container>
+        <div class="d-flex">
+          <div>
+            <button
+              class="btn btn-primary py-3 px-5"
+              type="submit"
+              [disabled]="roupasFormArray.length === 0 || pedidoOnlineForm.invalid"
+            >
+              Solicitar Orçamento
+            </button>
+          </div>
+          <div>
+            <button
+              class="btn btn-primary py-3 px-2 ml-2"
+              (click)="adicionarItem($event)"
+            >
+              Adicionar Item
+            </button>
+          </div>
+          <div *ngIf="roupasFormArray.length > 0">
+            <button
+              class="btn btn-primary py-3 px-2 ml-2"
+              (click)="removerItem($event)"
+            >
+              Remover Item
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

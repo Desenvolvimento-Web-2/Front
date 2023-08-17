@@ -1,0 +1,88 @@
+{
+  "usuario": [
+    {
+      "id": 1,
+      "nome": "admin",
+      "email": "admin@admin.com",
+      "cpf": "111.111.111-11",
+      "senha": "admin123",
+      "telefone": "(41) 9 9999-9999",
+      "endereco": "Rua do Funcionario",
+      "perfil": "funcionario"
+    },
+    {
+      "cpf": "11111111111",
+      "nome": "cliente",
+      "senha": "cliente",
+      "email": "cliente@cliente.com",
+      "telefone": "(41) 9 9999-9999",
+      "perfil": "cliente",
+      "endereco": "Rua do Cliente",
+      "id": 2
+    }
+  ],
+  "funcionarios": [],
+  "pedidos": [
+    {
+      "roupas": [
+        {
+          "id": "2",
+          "quantidade": 1
+        }
+      ],
+      "clienteId": 5,
+      "id": 1,
+      "status": "finalizado"
+    }
+  ],
+  "roupas": [
+    {
+      "id": 1,
+      "nome": "roupa social",
+      "prazo": "13",
+      "preco": 49.7
+    },
+    {
+      "id": 2,
+      "nome": "camiseta/regata",
+      "prazo": 7,
+      "preco": 80.54
+    },
+    {
+      "id": 3,
+      "nome": "bermuda",
+      "prazo": 7,
+      "preco": 75.99
+    },
+    {
+      "id": 4,
+      "nome": "blusa fina",
+      "prazo": 7,
+      "preco": 64.2
+    },
+    {
+      "id": 5,
+      "nome": "blusa grossa",
+      "prazo": 14,
+      "preco": 89.99
+    },
+    {
+      "id": 6,
+      "nome": "calça de moletom",
+      "prazo": 10,
+      "preco": 69.99
+    },
+    {
+      "id": 7,
+      "nome": "calça jeans",
+      "prazo": 12,
+      "preco": 79.99
+    },
+    {
+      "nome": "teste",
+      "prazo": "2",
+      "preco": 12,
+      "id": 8
+    }
+  ]
+}
