@@ -1,0 +1,89 @@
+<div class="container-fluid">
+    <div class="d-flex flex-column text-center mb-5 pt-5">
+      <h1 class="display-4 m-0">Pedidos</h1>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-8 mb-5">
+        <form>
+          <div class="row justify-content-center mb-2">
+            <div class="col-2 form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="filter"
+                value="{{status.EM_ABERTO}}"
+                [(ngModel)]="filtroStatus"
+              />
+              <label class="form-check-label" for="filterOpen">Aberto</label>
+            </div>
+            <div class="col-2 form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="filter"
+                value="{{status.AGUARDANDO_PAGAMENTO}}"
+                [(ngModel)]="filtroStatus"
+              />
+              <label class="form-check-label" for="filterOpen">Aguardando Pagamento</label>
+            </div>
+            <div class="col-2 form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="filter"
+                value="{{status.PAGO}}"
+                [(ngModel)]="filtroStatus"
+              />
+              <label class="form-check-label" for="filterOpen">Pago</label>
+            </div>
+            <div class="col-2 form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="filter"
+                value="{{status.FINALIZADO}}"
+                [(ngModel)]="filtroStatus"
+              />
+              <label class="form-check-label" for="filterFinished">Finalizado</label>
+            </div>
+            <div class="col-2 form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="filter"
+                value="{{status.CANCELADO}}"
+                [(ngModel)]="filtroStatus"
+              />
+              <label class="form-check-label" for="filterCancelled">Cancelado</label>
+            </div>
+            <div class="col-2 form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="filter"
+                value="{{status.REJEITADO}}"
+                [(ngModel)]="filtroStatus"
+              />
+              <label class="form-check-label" for="filterCancelled">Rejeitado</label>
+            </div>
+          </div>
+            
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-primary btn-sm mb-1 ml-2" type="button" (click)="filtrar()" [disabled]="!filtroStatus">Aplicar</button>
+            <button class="btn btn-primary btn-sm mb-1 ml-2" type="button" (click)="limparFiltro()" [disabled]="!filtroStatus">Limpar filtro</button>
+          </div>
+        </form>
+  
+        <div class="d-flex justify-content-center m-4">
+          <button
+            class="btn btn-primary"
+            (click)="navegarParaPedidoOrcamento()"
+          >
+            Solicitar Orçamento
+          </button>
+        </div>
+        <app-cliente-pedido-table [pedidos]="pedidos" [roupas]="roupas"></app-cliente-pedido-table>
+      </div>
+    </div>
+  </div>
+  
