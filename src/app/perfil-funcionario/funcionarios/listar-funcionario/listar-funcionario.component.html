@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div class="d-flex flex-column text-center mb-5 pt-5">
+        <h1 class="display-4 m-0">CRUD funcionarios</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-8 mb-5">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Data de nascimento</th>
+                        <th class="text-center">
+                            <a [routerLink]="['/funcionario/inserir']"
+                            href="#" title="Novo" alt="Novo" class="btn btn-primary btn-sm">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Novo
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let funcionario of funcionarios">
+                        <td>{{funcionario.nome}}</td>
+                        <td>{{funcionario.email}}</td>
+                        <td>{{funcionario.dataNascimento}}</td> <!--! | mask: 'd0/M0/0000'-->
+                        <td class="text-center" style="width: 300px">
+                            <a href="#" title="Editar" alt="Editar" class="btn btn-primary btn-sm mb-1"
+                            [routerLink]="['/funcionario/editar', funcionario.id]"> 
+                                <i class="fa fa-edit" aria-hidden="true"></i>
+                            </a>
+                            <a href="#" title="Remover" alt="Remover" class="btn btn-primary btn-sm mb-1 ml-1"
+                            (click)="remover($event, funcionario)">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p *ngIf="funcionarios.length==0">Nenhuma funcionário cadastrada</p>
+        </div>
+    </div>
+</div>

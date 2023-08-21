@@ -1,0 +1,68 @@
+<div class="container-fluid">
+    <div class="d-flex flex-column text-center mb-5 pt-5">
+        <h1 class="display-4 m-0">Adicionar funcionario</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-8 mb-5">
+            <div class="well">
+                <form #formFuncionario="ngForm">
+                    <div class="form-group">
+                        <label for="nome">Nome do funcionário:</label>
+                        <input type="text" class="form-control" id="nome" name="nome"
+                        [(ngModel)]="funcionario.nome" #nome="ngModel"
+                        minlength="2" required>
+                        <div *ngIf="nome.errors && (nome.dirty || nome.touched)" 
+                        class="alert alert-danger">
+                            <div [hidden]="!nome.errors['required']">Digite o nome do funcionário</div>
+                            <div [hidden]="!nome.errors['minlength']">O nome do funcionário deve conter ao menos 2 caracteres</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" 
+                        name="email" Validators.email
+                        [(ngModel)]="funcionario.email" #email="ngModel"
+                        required email>
+                        <div *ngIf="email.errors && (email.dirty || email.touched)" 
+                        class="alert alert-danger">
+                            <div [hidden]="!email.errors['required']">Digite o email do funcionário</div>
+                            <div [hidden]="!email.errors['email']">Digite um email válido (ex: user@gmail.com)</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dataNascimento">Data de nascimento:</label>
+                        <input type="date" class="form-control" id="dataNascimento" 
+                        name="dataNascimento" 
+                        [(ngModel)]="funcionario.dataNascimento" #dataNascimento="ngModel"
+                        mask="d0/M0/0000" required>
+                        <div *ngIf="dataNascimento.errors && (dataNascimento.dirty || dataNascimento.touched)" 
+                        class="alert alert-danger">
+                            <div [hidden]="!dataNascimento.errors['required']">Digite o data de nascimento do funcionário</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="senha">Senha:</label>
+                        <input type="password" class="form-control" id="senha" 
+                        name="senha" 
+                        [(ngModel)]="funcionario.senha" #senha="ngModel"
+                        required>
+                        <div *ngIf="senha.errors && (senha.dirty || senha.touched)" 
+                        class="alert alert-danger">
+                            <div [hidden]="!senha.errors['required']">Digite a senha do funcionário</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary btn-sm mb-1"
+                        (click)="inserir()" [disabled]="!formFuncionario.form.valid">
+                            <i class="fa fa-save" aria-hidden="true"></i> Salvar
+                        </button>
+                        <a class="btn btn-primary btn-sm mb-1 ml-1"
+                        [routerLink]="['/funcionario/listar']">
+                            <i class="fa fa-arrow-left" aria-hidden="true"></i>  Voltar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
