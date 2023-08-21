@@ -1,0 +1,77 @@
+<div class="container-fluid">
+  <div class="d-flex flex-column text-center mb-5 pt-5">
+    <h1 class="display-4 m-0">Consultar pedido</h1>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-8 mb-5">
+      <form onsubmit="event.preventDefault()">
+        <div class="form-group">
+          <div class="col">
+            <input
+              #search
+              (keyup.enter)="pesquisarPedido(search)"
+              type="text"
+              class="form-control p-4"
+              placeholder="ex: 112233"
+              numerico
+            />
+          </div>
+          <div class="col">
+            <button
+              (click)="pesquisarPedido(search)"
+              class="btn btn-primary py-2 px-5"
+              type="button"
+            >
+              Pesquisar
+            </button>
+            <button
+              *ngIf="searchResult.length > 0"
+              (click)="limparPesquisa()"
+              class="btn btn-primary py-2 ml-2"
+              type="button"
+            >
+              Limpar Pesquisa
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-12 col-sm-8 mb-5">
+      <table class="table table-striped" *ngIf="searchResult.length > 0">
+        <thead>
+          <tr>
+            <th style="width: 5%">Nº</th>
+            <th style="width: 10%">Roupas</th>
+            <th style="width: 10%">Prazo</th>
+            <th style="width: 5%">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pedido of searchResult">
+            <td>{{ pedido["id"] }}</td>
+            <td>
+              <ul>
+                <li *ngFor="let roupa of pedido.roupas">
+                  {{getNomeRoupa(roupa.id)}}, {{roupa.quantidade}}
+                </li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li *ngFor="let roupa of pedido.roupas">
+                  {{getPrazoRoupa(roupa.id)}}
+                </li>
+              </ul>
+             </td>
+            <td [ngStyle]="getColor(pedido)">{{pedido.status}}</td>
+          </tr>
+          <tr *ngIf="searchResult.length > 0">
+            <th colspan="2">Preço Total</th>
+            <th>R$ {{ precoTotal }}</th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

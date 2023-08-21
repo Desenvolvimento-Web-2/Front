@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <div class="d-flex flex-column text-center mb-5 pt-5">
+    <h1 class="display-4 m-0">Pagamento do pedido N°{{pedido.id}}</h1>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-8 mb-5">
+      <table class="table table-striped">
+        <thead class="thead-light">
+          <tr>
+            <th>Peça</th>
+            <th>Quantidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let roupa of pedido.roupas">
+            <td>
+              {{getNomeRoupa(roupa.id)}}
+            </td>
+            <td>{{roupa.quantidade}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Preço Total</th>
+            <th scope="row">R$ {{calculaPrecoTotal()}}</th>
+          </tr>
+        </tbody>
+      </table>
+      <form>
+        <div class="row">
+          <div class="form-group col">
+            <label for="dataSolicitacao">Prazo</label>
+            <input
+              type="text"
+              readonly
+              value="{{getPrazoRoupa()}}"
+              class="form-control p-4"
+            >
+          </div>
+          <div class="form-group col">
+            <label for="dataSolicitacao">Status</label>
+            <input
+              type="text"
+              readonly
+              value="{{pedido.status}}"
+              class="form-control p-4"
+            >
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-4">
+            <label for="metodoPagamento">Método de pagamento</label>
+            <select [(ngModel)]="metodoPagamento" [ngModelOptions]="{standalone: true}" id="metodoPagamento" class="form-control" aria-label="Método de pagamento">
+              <option value="boleto" selected>Boleto</option>
+              <option value="pix">Pix</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary py-3 px-4" [disabled]="!metodoPagamento" (click)="pagar()">Pagar</button>
+      </form>
+    </div>
+  </div>
+</div>
