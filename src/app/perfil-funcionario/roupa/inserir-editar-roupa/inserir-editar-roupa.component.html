@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="d-flex flex-column text-center mb-5 pt-5">
+        <h1 *ngIf="novaRoupa" class="display-4 m-0">Adicionar peça de roupa</h1>
+        <h1 *ngIf="!novaRoupa" class="display-4 m-0">Editar peça de roupa</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-8 mb-5">
+            <form #formRoupa="ngForm">
+                <div class="form-group">
+                    <label for="peca">Peça: </label>
+                    <input type="text" class="form-control" id="peca" name="peca" [(ngModel)]="roupa.nome" #peca="ngModel"
+                        minlength="2" required>
+                    <div *ngIf="peca.errors && (peca.dirty || peca.touched)" class="alert alert-danger">
+                        <div [hidden]="!peca.errors['required']">Digite o nome da peça de roupa</div>
+                        <div [hidden]="!peca.errors['minlength']">A peça de roupa deve conter pelo menos 2 caracteres</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="prazo">Tempo de lavagem (em dias): </label>
+                    <input type="number" class="form-control" id="prazo" name="prazo" [(ngModel)]="roupa.prazo" #prazo="ngModel"
+                        minlength="1" numerico required>
+                    <div *ngIf="prazo.errors && (prazo.dirty || prazo.touched)" class="alert alert-danger">
+                        <div [hidden]="!prazo.errors['required']">Digite o tempo de lavagem (em dias)</div>    
+                        <div [hidden]="!prazo.errors['minlength']">O tempo de lavagem deve conter pelo menos 1 dígito</div>    
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="preco">Preço de lavagem: </label>
+                    <input type="text" class="form-control" id="preco" name="preco" [(ngModel)]="roupa.preco" #preco="ngModel"
+                        minlength="1"
+                        prefix="R$ " mask="separator.2" thousandSeparator="."
+                        required >
+                    <div *ngIf="preco.errors && (preco.dirty || preco.touched)" class="alert alert-danger">
+                        <div [hidden]="!preco.errors['required']">Digite o valor da lavagem da peça</div>    
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-primary" (click)="salvar()" [disabled]="!formRoupa.form.valid">
+                    <i *ngIf="!loading" class="fa fa-save" aria-hidden="true"></i>
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> Salvar
+                </button>
+                <a class="btn btn-secondary" [routerLink]="['/roupa/listar']">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
