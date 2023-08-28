@@ -13,8 +13,8 @@ import {
   RelatorioClientesFieisComponent,
   RelatorioReceitasComponent,
 } from '../perfil-funcionario';
-import { 
-  PaginaInicialClienteComponent, 
+import {
+  PaginaInicialClienteComponent,
   ConsultaPedidosComponent,
   PedidoOnlineComponent,
   OrcamentosComponent,
@@ -32,7 +32,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   { path: 'cadastro', component: AutocadastroComponent },
-  { 
+  {
     path: 'home',
     component: PaginaInicialClienteComponent,
     canActivate: [AuthGuard],
@@ -40,7 +40,7 @@ const routes: Routes = [
       role: [Perfil.CLIENTE]
     }
   },
-  { 
+  {
     path: 'pedido',
     component: PedidoOnlineComponent,
     canActivate: [AuthGuard],
@@ -48,15 +48,15 @@ const routes: Routes = [
       role: [Perfil.CLIENTE]
     }
   },
-  { 
-    path: 'pedido/orcamento', 
+  {
+    path: 'pedido/orcamento',
     component: OrcamentosComponent,
     canActivate: [AuthGuard],
     data: {
       role: [Perfil.CLIENTE]
     }
   },
-  { 
+  {
     path: 'pedido/:id/pagar',
     component: PagarPedidoComponent,
     canActivate: [AuthGuard],
@@ -64,16 +64,16 @@ const routes: Routes = [
       role: [Perfil.CLIENTE]
     }
   },
-  { 
-    path: 'pedidos', 
+  {
+    path: 'pedidos',
     component: ListagemPedidosComponent,
     canActivate: [AuthGuard],
     data: {
       role: [Perfil.CLIENTE]
     }
   },
-  { 
-    path: 'pedidos/consulta', 
+  {
+    path: 'pedidos/consulta',
     component: ConsultaPedidosComponent,
     canActivate: [AuthGuard],
     data: {
@@ -96,32 +96,32 @@ const routes: Routes = [
       role: [Perfil.FUNCIONARIO]
     }
   },
-  { 
-    path: 'roupa/listar', 
+  {
+    path: 'roupa/listar',
     component: ListarRoupaComponent ,
     canActivate: [AuthGuard],
     data: {
       role: [Perfil.FUNCIONARIO]
     }
   },
-  { 
-    path: 'roupa/inserir', 
+  {
+    path: 'roupa/inserir',
     component: InserirEditarRoupaComponent ,
     canActivate: [AuthGuard],
     data: {
       role: [Perfil.FUNCIONARIO]
     }
   },
-  { 
-    path: 'roupa/editar/:id', 
+  {
+    path: 'roupa/editar/:id',
     component: InserirEditarRoupaComponent,
     canActivate: [AuthGuard],
     data: {
       role: [Perfil.FUNCIONARIO]
     }
   },
-  { 
-    path: 'relatorios', 
+  {
+    path: 'relatorios',
     component: RelatorioComponent ,
     canActivate: [AuthGuard],
     data: {
@@ -136,7 +136,7 @@ const routes: Routes = [
       role: [Perfil.FUNCIONARIO]
     }
   },
-  { 
+  {
     path: 'relatorios-receitas',
     component: RelatorioReceitasComponent,
     canActivate: [AuthGuard],
@@ -144,7 +144,7 @@ const routes: Routes = [
       role: [Perfil.FUNCIONARIO]
     }
   },
-  { 
+  {
     path: 'funcionario/listar',
     component: ListarFuncionarioComponent,
     canActivate: [AuthGuard],
@@ -152,7 +152,7 @@ const routes: Routes = [
       role: [Perfil.FUNCIONARIO]
     }
   },
-  { 
+  {
     path: 'funcionario/inserir',
     component: InserirFuncionarioComponent,
     canActivate: [AuthGuard],
@@ -160,7 +160,7 @@ const routes: Routes = [
       role: [Perfil.FUNCIONARIO]
     }
   },
-  { 
+  {
     path: 'funcionario/editar/:id',
     component: EditarFuncionarioComponent,
     canActivate: [AuthGuard],

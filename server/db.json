@@ -33,6 +33,72 @@
       "clienteId": 5,
       "id": 1,
       "status": "finalizado"
+    },
+    {
+      "roupas": [
+        {
+          "id": "2",
+          "quantidade": 1
+        }
+      ],
+      "clienteId": 5,
+      "id": 1,
+      "status": "pago"
+    },
+    {
+      "roupas": [
+        {
+          "id": "2",
+          "quantidade": 1
+        }
+      ],
+      "clienteId": 5,
+      "id": 1,
+      "status": "aguardando pagamento"
+    },
+    {
+      "roupas": [
+        {
+          "id": "2",
+          "quantidade": 1
+        }
+      ],
+      "clienteId": 5,
+      "id": 1,
+      "status": "recolhido"
+    },
+    {
+      "roupas": [
+        {
+          "id": "2",
+          "quantidade": 1
+        }
+      ],
+      "clienteId": 5,
+      "id": 1,
+      "status": "cancelado"
+    },
+    {
+      "roupas": [
+        {
+          "id": "2",
+          "quantidade": 1
+        }
+      ],
+      "clienteId": 5,
+      "id": 1,
+      "status": "rejeitado"
+    },
+    {
+      "roupas": [
+        {
+          "id": "2",
+          "quantidade": 1
+        }
+      ],
+      "clienteId": 5,
+      "id": 1,
+      "status": "em aberto"
     }
   ],
   "roupas": [
